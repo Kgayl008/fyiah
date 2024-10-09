@@ -21,10 +21,16 @@
 }
 
 .header {
-  background-color: #323232;
+  background-color: black;
   display: flex;
   flex-direction: column;
 }
+
+.header__wordmark{
+  display: flex;
+  justify-content: center;
+}
+
 @media screen and (min-width: 768px) {
   .header {
     display: flex;
@@ -39,7 +45,10 @@
   display: flex;
   justify-content: center;
   padding-top: 1.5rem;
-  padding-bottom: 1rem;
+  /* padding-bottom: 1rem;
+  padding-left: 1.5rem; */
+  height: 6rem;
+  width: 3rem;
 }
 @media screen and (min-width: 768px) {
   .header__logo {
@@ -80,8 +89,40 @@
   font-weight: 600;
 }
 
+.section__about-title {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  color: white;
+}
+@media screen and (min-width: 768px) {
+  .section__about-title {
+    font-size: 2.25rem;
+    line-height: 2.75rem;
+    padding-top: 3rem;
+    padding-bottom: 1.125rem;
+    padding-left: 2.25rem;
+    padding-right: 2.25rem;
+    font-weight: 700;
+  }
+}
+@media screen and (min-width: 768px) and (min-width: 1280px) {
+  .section__about-title {
+    padding-left: 10rem;
+    padding-top: 3rem;
+  }
+}
+.section__video{
+  /* display: flex;
+  justify-content: center; */
+  background: black;
+}
 .footer__container {
-  background-color: #323232;
+  background-color: black;
   padding-left: 1rem;
   padding-right: 1rem;
 }
@@ -93,6 +134,8 @@
 }
 .footer__wordmark {
   display: none;
+  height: 6rem;
+  width: 3rem;
 }
 @media screen and (min-width: 768px) {
   .footer__wordmark {
@@ -235,7 +278,7 @@
   position: relative;
   width: 100vw;
   height: 30%;
-  background: #323232;
+  background: black;
 }
 .hero__text {
   position: absolute;
@@ -289,7 +332,7 @@
 }
 @media screen and (min-width: 768px) and (min-width: 1280px) {
   .hero__heading {
-    padding-right: 3.4375rem;
+    padding-right: 17.4375rem;
   }
 }
 .hero__section {
@@ -515,3 +558,10 @@
     width: 50%;
   }
 }/*# sourceMappingURL=shows.css.map */
+
+.video{
+  display: flex;
+  justify-content: center;
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+}
