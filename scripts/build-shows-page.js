@@ -29,12 +29,6 @@ const showsArray = [
         place: "Sunrise Amphitheater",
         location: "Sunrise, FL"
     },
-    {
-        id: "6",
-        date: new Date(2025, 3, 15).getTime(), // April 15, 2025
-        place: "St. Augustine Amphitheater",
-        location: "St. Augustine, FL"
-    }
 ];
 
 const showsSection = document.querySelector("#shows__section");
@@ -48,9 +42,9 @@ for (let i = 0; i < showsArray.length; i++) {
     const container = document.createElement("div");
     container.classList.add("container");
     showsSection.appendChild(container);
-    // container.addEventListener("mousedown", () => {
-    //     container.classList.toggle("selected");
-    // });
+    container.addEventListener("mousedown", () => {
+        container.classList.toggle("selected");
+    });
 
     // Date container
     const dateContainer = document.createElement("div");
