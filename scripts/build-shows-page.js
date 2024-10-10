@@ -1,47 +1,74 @@
+// Define a list of Florida venues with random dates (in timestamp format)
+const showsArray = [
+    {
+        id: "1",
+        date: new Date(2024, 10, 12).getTime(), // November 12, 2024
+        place: "Miami Theater",
+        location: "Miami, FL"
+    },
+    {
+        id: "2",
+        date: new Date(2024, 11, 5).getTime(), // December 5, 2024
+        place: "Orlando Arena",
+        location: "Orlando, FL"
+    },
+    {
+        id: "3",
+        date: new Date(2025, 0, 18).getTime(), // January 18, 2025
+        place: "Tampa Bay Stadium",
+        location: "Tampa, FL"
+    },
+    {
+        id: "4",
+        date: new Date(2025, 1, 10).getTime(), // February 10, 2025
+        place: "Jacksonville Civic Center",
+        location: "Jacksonville, FL"
+    },
+    {
+        id: "5",
+        date: new Date(2025, 2, 22).getTime(), // March 22, 2025
+        place: "Sunrise Amphitheater",
+        location: "Sunrise, FL"
+    },
+    {
+        id: "6",
+        date: new Date(2025, 3, 15).getTime(), // April 15, 2025
+        place: "St. Augustine Amphitheater",
+        location: "St. Augustine, FL"
+    }
+];
 
-const showsURL = "https://project-1-api.herokuapp.com/showdates/?api_key=0aaf8967-4617-4546-9578-25b998b99ff0";
+const showsSection = document.querySelector("#shows__section");
+showsSection.classList.add("shows__section");
 
-let showsArray = [];
+// Loop through the showsArray and create the show elements
+for (let i = 0; i < showsArray.length; i++) {
+    const show = showsArray[i];
 
-axios.get(showsURL)
-    .then(result => {
-        console.log(result);
-        showsArray = (result.data);
-    
-
-const shows = document.querySelector("#shows__section");
-shows.classList.add("shows__section");
-
-
-for (let i = 0; i < showsArray.length; i++){
-    const shows = document.querySelector("#shows__section");
-    shows.classList.add("shows__section");
-
-    //parent container to each containers
+    // Parent container for each show
     const container = document.createElement("div");
     container.classList.add("container");
-    shows.appendChild(container);
+    showsSection.appendChild(container);
     container.addEventListener("mousedown", () => {
-    container.classList.toggle("selected");
-});
+        container.classList.toggle("selected");
+    });
 
-    //heading date
+    // Date container
     const dateContainer = document.createElement("div");
     dateContainer.classList.add("container__dates");
     container.appendChild(dateContainer);
 
-    const dateTitle = document.createElement('p');
+    const dateTitle = document.createElement("p");
     dateTitle.innerHTML = "DATE";
     dateContainer.appendChild(dateTitle);
     dateTitle.classList.add("shows__date-title");
 
     const dateContent = document.createElement("p");
-    dateContent.innerHTML = convertDate(showsArray[i].date);
+    dateContent.innerHTML = convertDate(show.date);
     dateContainer.appendChild(dateContent);
     dateContent.classList.add("shows__dates");
-    
-    //heading venue
 
+    // Venue container
     const venueContainer = document.createElement("div");
     venueContainer.classList.add("container__venue");
     container.appendChild(venueContainer);
@@ -52,15 +79,14 @@ for (let i = 0; i < showsArray.length; i++){
     venueTitle.classList.add("shows__venue-title");
 
     const venueContent = document.createElement("p");
-    venueContent.innerHTML = showsArray[i].place;
+    venueContent.innerHTML = show.place;
     venueContainer.appendChild(venueContent);
     venueContent.classList.add("shows__venue-content");
 
-    //heading location
-
+    // Location container
     const locationContainer = document.createElement("div");
     locationContainer.classList.add("container__location");
-    container.appendChild(locationContainer); 
+    container.appendChild(locationContainer);
 
     const locationTitle = document.createElement("p");
     locationTitle.innerHTML = "LOCATION";
@@ -68,25 +94,50 @@ for (let i = 0; i < showsArray.length; i++){
     locationTitle.classList.add("shows__location-title");
 
     const locationContent = document.createElement("p");
-    locationContent.innerHTML = showsArray[i].location;
+    locationContent.innerHTML = show.location;
     locationContainer.appendChild(locationContent);
     locationContent.classList.add("shows__location-content");
 
-    //create a div for the button
+    // Buy Tickets button
     const buyButtonContainer = document.createElement("div");
     container.appendChild(buyButtonContainer);
 
     const buyTicketButton = document.createElement("button");
     buyTicketButton.innerHTML = "BUY TICKETS";
     buyButtonContainer.appendChild(buyTicketButton);
-    buyTicketButton.classList.add("shows__button")
+    buyTicketButton.classList.add("shows__button");
 }
-})
-.catch(error => {
-    console.error(error);
-});
+
+// Function to format dates
 function convertDate(timestamp) {
     const date = new Date(timestamp);
     const options = { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' };
     return date.toLocaleDateString('en-US', options);
 }
+
+//Send Email
+const contactForm = document.getElementById('contact__form'),
+        contactMessage = document.getElementById('contact-message')
+
+const sendEmail = (e) =>{
+    e.preventDefault()
+    // serviceID - templateID - #form - publicKey
+    emailjs.sendForm('service_9mfzb83','template_yjb4y9h','#contact__form','QxIVM4LRh4s1DAc3E')
+    .then(()=>{
+        // Show sent message
+        contactMessage.textContent = 'Message sent successfully ✅'
+
+        // Remove message after five seconds
+        setTimeout(() =>{
+            contactMessage.textContent = ''
+        }, 5000)
+
+        // Clear input fields
+        contactForm.reset()
+    }, () =>{
+        // Show error message
+        contactMessage.textContent = 'Message not sent (service error) ❌'
+    })
+}
+
+contactForm.addEventListener('submit', sendEmail)
