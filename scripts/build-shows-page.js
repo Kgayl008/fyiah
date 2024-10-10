@@ -1,25 +1,25 @@
 const showsArray = [
     {
         id: "1",
-        date: new Date(2024, 10, 12).getTime(), // November 12, 2024
+        date: new Date(2024, 10, 12).getTime(),
         place: "Miami Theater",
         location: "Miami, FL"
     },
     {
         id: "2",
-        date: new Date(2024, 11, 5).getTime(), // December 5, 2024
+        date: new Date(2024, 11, 5).getTime(),
         place: "Orlando Arena",
         location: "Orlando, FL"
     },
     {
         id: "3",
-        date: new Date(2025, 0, 18).getTime(), // January 18, 2025
+        date: new Date(2025, 0, 18).getTime(),
         place: "Tampa Bay Stadium",
         location: "Tampa, FL"
     },
     {
         id: "4",
-        date: new Date(2025, 1, 10).getTime(), // February 10, 2025
+        date: new Date(2025, 1, 10).getTime(),
         place: "Jacksonville Civic Center",
         location: "Jacksonville, FL"
     },
