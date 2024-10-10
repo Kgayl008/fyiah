@@ -1,4 +1,3 @@
-// Define a list of Florida venues with random dates (in timestamp format)
 const showsArray = [
     {
         id: "1",
@@ -49,9 +48,9 @@ for (let i = 0; i < showsArray.length; i++) {
     const container = document.createElement("div");
     container.classList.add("container");
     showsSection.appendChild(container);
-    container.addEventListener("mousedown", () => {
-        container.classList.toggle("selected");
-    });
+    // container.addEventListener("mousedown", () => {
+    //     container.classList.toggle("selected");
+    // });
 
     // Date container
     const dateContainer = document.createElement("div");
@@ -99,13 +98,25 @@ for (let i = 0; i < showsArray.length; i++) {
     locationContent.classList.add("shows__location-content");
 
     // Buy Tickets button
-    const buyButtonContainer = document.createElement("div");
-    container.appendChild(buyButtonContainer);
+const buyButtonContainer = document.createElement("div");
+container.appendChild(buyButtonContainer);
 
-    const buyTicketButton = document.createElement("button");
-    buyTicketButton.innerHTML = "BUY TICKETS";
-    buyButtonContainer.appendChild(buyTicketButton);
-    buyTicketButton.classList.add("shows__button");
+// Create an anchor element
+const buyTicketLink = document.createElement("a");
+buyTicketLink.href = "https://www.bandsintown.com/a/15561233-fyiah?came_from=257&utm_medium=web&utm_source=home&utm_campaign=search_bar";
+buyTicketLink.target = "_blank"; // Opens the link in a new tab
+buyTicketLink.classList.add("shows__button"); // Add any relevant classes
+
+// Create the button
+const buyTicketButton = document.createElement("button");
+buyTicketButton.innerHTML = "BUY TICKETS";
+buyTicketButton.classList.add("shows__button");
+
+// Append the button to the anchor
+buyTicketLink.appendChild(buyTicketButton);
+
+// Append the anchor to the button container
+buyButtonContainer.appendChild(buyTicketLink);
 }
 
 // Function to format dates
