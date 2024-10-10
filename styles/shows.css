@@ -574,11 +574,17 @@
   padding: 2rem;
 }
 
+.contact__container{
+  background: #8D2200;
+}
+
 .contact__title{
   font-size: 2.25rem;
+  color: #FFFFFF;
 }
 .contact__subtitle {
   margin-bottom: 1rem;
+  color: #FFFFFF;
 }
 
 #contact__form {
@@ -601,6 +607,7 @@
 .contact__label {
   margin-bottom: 0.5rem;
   font-weight: bold;
+  color: #FFFFFF;
 }
 
 .contact__input,
